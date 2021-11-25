@@ -3,6 +3,7 @@ package com.example.diceroller
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.widget.Button
+import android.widget.EditText
 import android.widget.TextView
 
 class MainActivity : AppCompatActivity() {
@@ -15,7 +16,12 @@ class MainActivity : AppCompatActivity() {
     }
 
     private fun rollDice() {
-        val dice = Dice(6)
+
+        val nrInput: EditText = findViewById(R.id.editTextNumberPassword)
+        val nrFacesText = nrInput.text.toString()
+        val nrFaces: Int = if (nrFacesText == "") 1 else Integer.parseInt(nrFacesText)
+
+        val dice = Dice(nrFaces)
         val diceRoll = dice.roll()
         val resultTextView: TextView = findViewById(R.id.textView)
         resultTextView.text = diceRoll.toString()

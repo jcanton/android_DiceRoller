@@ -1,4 +1,5 @@
 <resources>
     <string name="app_name">Dice Roller</string>
     <string name="buttonRoll">Roll</string>
+    <string name="hint_nr_of_faces">nr. of faces</string>
 </resources>
