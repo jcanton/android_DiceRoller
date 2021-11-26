@@ -3,8 +3,7 @@ package com.example.diceroller
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.widget.Button
-import android.widget.EditText
-import android.widget.TextView
+import android.widget.ImageView
 import android.widget.Toast
 
 class MainActivity : AppCompatActivity() {
@@ -20,8 +19,22 @@ class MainActivity : AppCompatActivity() {
 
         val dice = Dice(6)
         val diceRoll = dice.roll()
-        val resultTextView: TextView = findViewById(R.id.textView)
-        resultTextView.text = diceRoll.toString()
+        val diceImage: ImageView = findViewById(R.id.imageView)
+
+        val drawableResource = when (diceRoll) {
+            1 -> R.drawable.dice_1
+            2 -> R.drawable.dice_2
+            3 -> R.drawable.dice_3
+            4 -> R.drawable.dice_4
+            5 -> R.drawable.dice_5
+            6 -> R.drawable.dice_6
+            else -> {
+                Toast.makeText(this, "Error with number of dice faces", Toast.LENGTH_SHORT).show()
+                R.drawable.dice_1
+            }
+        }
+        diceImage.setImageResource(drawableResource)
+        diceImage.contentDescription = diceRoll.toString()
     }
 }
 
